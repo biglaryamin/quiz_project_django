@@ -8,14 +8,25 @@
 </head>
 <body>
     <h3 style="color: maroon;">{{the_quiz}}</h3>
+
     <ul>
-        <li>{{the_quiz.op1}}<br></li>
-        <li>{{the_quiz.op2}}<br></li>
-        <li>{{the_quiz.op3}}<br></li>
-        <li>{{the_quiz.op4}}<br></li>
+        <a href="#"><li>{{the_quiz.op1}}<br></li></a>
+        <a href="#"><li>{{the_quiz.op2}}<br></li></a>
+        <a href="#"><li>{{the_quiz.op3}}<br></li></a>
+        <a href="#"><li>{{the_quiz.op4}}<br></li></a>
     </ul>
+
     {% for cat in the_quiz.Category.all %}
         <span style="font-size: smaller;">{{cat}}</span>
     {% endfor %}
+    
+    <br>
+    <br>
+
+    {% if right_answer %}
+        <span style="color: green">{{right_answer}}</span>
+    {% endif %}
+
+
 </body>
 </html>

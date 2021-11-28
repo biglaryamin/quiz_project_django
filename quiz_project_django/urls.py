@@ -20,3 +20,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('quiz_app.urls')),
 ]
+
+
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
+]

@@ -1,8 +1,11 @@
 from django.urls import path
-from .views import test_view,detail_view
+from .import views
 
 
+
+app_name="quiz"
 urlpatterns = [
-    path('', test_view),
-    path('<id>', detail_view , name="detail"),
+    path(''    , views.home_view   , name="home"),
+    path('list', views.list_view   , name="list"),
+    path('<id>', views.detail_view , name="detail"),
 ]
