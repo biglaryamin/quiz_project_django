@@ -7,6 +7,17 @@
     <title>homepage</title>
 </head>
 <body>
-    <a href="{% url 'list' %}"><h1 style="text-align: center;">Start</h1></a>
+    <div style="text-align: center;">
+        {% if user.is_authenticated %}
+            <h>Welcome {{user.username}}</h>
+            <h3><a href="{% url 'list' %}">Go to quiz list</a></h3>
+        {% else %}
+            <h1><a href="{% url 'login' %}">login</a></h1>
+            <br/>
+            <br/>
+            <span>If you are not registered before, so do it!</span>
+            <h1><a href="#">register</a></h1>
+        {% endif %}
+    </div>
 </body>
 </html>

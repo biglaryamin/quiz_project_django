@@ -3,6 +3,11 @@ from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from .models import Quiz
 from .forms import QuizForm
+#For sign_up view
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
+
 
 def home_view(request):
     return render(request,"homepage.html")
@@ -28,25 +33,8 @@ def add_vote(request):
     return render(request,"add_vote.html",{"form":form})  
 
 
-# def save_form(request):
-#     if request.method=='POST':
-        
-#         return render(request,"add_vote.html",{'form':form})
 
-
-# from django.shortcuts import render
-# from .forms import GeeksForm
-  
-# def home_view(request):
-#     context ={}
-  
-#     # create object of form
-#     form = GeeksForm(request.POST or None, request.FILES or None)
-      
-#     # check if form data is valid
-#     if form.is_valid():
-#         # save the form data to model
-#         form.save()
-  
-#     context['form']= form
-#     return render(request, "home.html", context)
+class SignUpView(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'registration/signup.html'
