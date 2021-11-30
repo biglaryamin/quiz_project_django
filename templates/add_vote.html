@@ -7,6 +7,10 @@
     <title>Add | Vote</title>
 </head>
 <body>
-    adding vote ...
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>

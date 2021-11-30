@@ -14,11 +14,8 @@ class Quiz(models.Model):
     op2     =models.CharField(max_length=200)
     op3     =models.CharField(max_length=200)
     op4     =models.CharField(max_length=200)
-    Category=models.ManyToManyField(Category)
+    Category=models.ManyToManyField(Category,null=True,blank=True)
     Answer  =models.CharField(max_length=200)
-    Clicked =models.BooleanField(default=False,null=True,blank=True)
-    is_right=models.BooleanField(default=False,null=True,blank=True)
 
     def __str__(self) -> str:
         return self.Question
-
