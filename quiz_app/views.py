@@ -7,6 +7,10 @@ from .forms import QuizForm
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
+#For restfulApi
+from rest_framework import viewsets
+from rest_framework import permissions
+from .serializer import QuizSerializer
 
 
 def home_view(request):
@@ -38,3 +42,10 @@ class SignUpView(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'
+
+
+
+
+class QuizViewSet(viewsets.ModelViewSet):
+    queryset         = Quiz.objects.all()
+    serializer_class = QuizSerializer
